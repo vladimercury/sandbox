@@ -1,0 +1,45 @@
+.navbar-fixed{
+	position: fixed;
+	width: 100%;
+	border-radius: 0px;
+}
+
+.navbar-fixed-bottom{
+	bottom: 0;
+}
+
+a{
+	cursor: pointer;
+}
+
+/**/
+.jumbotron.full-page{
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+}
+
+.jumbotron.center{
+	text-align: center;
+}
+
+table.bg{
+	background: rgba(238, 238, 238, 0.95);
+}
+
+table.valign-table{
+	width: 100%;
+	min-height: 100vh;
+}
+
+table.valign-table td{
+	vertical-align: middle;
+}
+
+table.pad-top td{
+	padding-top: 50px;
+}
+
+table.pad-bottom td{
+	padding-bottom: 50px;
+}
