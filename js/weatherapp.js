@@ -1,21 +1,31 @@
-var cityId = 498817;
-var cities = [
-	{id: 498817, name: "Saint Petersburg"},
-	{id: 1500607, name: "Lesosibirsk"},
-];
+var cities = {
+	id1500607: "Lesosibirsk",
+	id1502026: "Krasnoyarsk",
+	id498817: "Saint Petersburg",
+};
+
+var jsonData = {
+
+};
 
 var example = {"coord":{"lon":30.26,"lat":59.89},"weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04d"}],"base":"stations","main":{"temp":285.59,"pressure":1024,"humidity":96,"temp_min":284.82,"temp_max":286.48},"wind":{"speed":1.31,"deg":355.503},"rain":{"3h":0.055},"clouds":{"all":76},"dt":1474964540,"sys":{"type":3,"id":187864,"message":0.0289,"country":"RU","sunrise":1474948584,"sunset":1474990903},"id":498817,"name":"Saint Petersburg","cod":200};
-var webappWebResource = "http://api.openweathermap.org/data/2.5/weather?id=498817&appid=c8e9fe9958edb2d21b01a90fbb1262d2";
+var webPrefix = "http://api.openweathermap.org/data/2.5/weather?id=";
+var webPostfix = "&appid=c8e9fe9958edb2d21b01a90fbb1262d2";
 
-function refreshWeather(){
-	/* $.getJSON(webappWebResource, function(json) {
-		printWeatherData(json);
-	}); */
-	printWeatherData(example);
+function refreshWeather(cityID){
+	if(jsonData.hasOwnProperty(cityID)){
+		printWeatherData(jsonData[cityID]);
+	}
+	else{
+		$.getJSON(webPrefix + cityID.replace('id', '') + webPostfix, function(json) {
+			jsonData[cityID] = json;
+			printWeatherData(json);
+		});
+	}
 }
 
-function setBackground(){
-	$(".jumbotron").css("background", 'url("img/city/' + cityId + '.jpg") round');
+function setBackground(cityID){
+	$(".jumbotron").css("background", 'url("img/city/' + cityID + '.jpg") round');
 }
 
 function printWeatherData(json){
@@ -48,26 +58,27 @@ function windDirection(degree){
 	return res;
 }
 
-function drawLinks(){
+function drawLinks(cityID){
 	$("#cities").html("");
 	for (var i in cities){
-		if(i == 0){
-			$("#cities").append('<li class="active"><a id="id' + cities[i].id + '">' + cities[i].name + '</a></li>')
-		}
-		else{
-			$("#cities").append('<li><a id="id' + cities[i].id + '">' + cities[i].name + '</a></li>')
-		}
+		$("#cities").append('<li ' + (i === cityID ? 'class="active"' : '') + '><a id="' + i + '">' + cities[i] + '</a></li>');
 	}
 }
 
+function setCity(cityID){
+	setBackground(cityID);
+	refreshWeather(cityID);
+	drawLinks(cityID);
+}
+
 $(function(){
-	setBackground();
-	refreshWeather();
-	drawLinks();
+	setCity("id498817");
 });
 
 $(document).ready(function(){
-	$('li:not(.active) > a[id!="id"]').on("click", function(){
-		alert($(this).attr("id"));
+	$('#cities').on("click", 'li:not(.active) > a[id!="id"]', function(){
+		$('li.active').removeClass('active');
+		$(this).parent().addClass('active');
+		setCity($(this).attr("id"));
 	});
 });

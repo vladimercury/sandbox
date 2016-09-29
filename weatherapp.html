@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" href="lib/bs/css/bootstrap.united.min.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
+	<head>
+		<title>
+			WeatherApp
+		</title>
+	</head>
+	<body id="weatherapp">
+		<div id="navigation">
+			<div class="navbar navbar-default navbar-fixed">
+				<div class="container-fluid">
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+						<ul class="nav navbar-nav" id="cities">
+							<li class="active"><a id="id498817">Saint Petersburg</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="navbar navbar-default navbar-fixed navbar-fixed-bottom">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand">Project</a>
+					</div>
+
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+						<ul class="nav navbar-nav">
+							<li class="active"><a>WeatherApp <span class="sr-only">(current)</span></a></li>
+							<li><a>Link</a></li>
+							
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Other Projects <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="./index.html">WeatherApp</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Separated link</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="content">
+			<div class="jumbotron full-page center">
+				<table class="valign-table bg"><tr><td>
+					<h1 id="weather-city">
+						<span id="weather-city-name">No</span> 
+						<span id="weather-city-country" class="text-info">Connection</span>
+					</h1>
+					<h2 id="weather-temp">
+						<span id="weather-temp-val">with</span>
+						<sup id="weather-temp-degree"></sup><span id="weather-temp-unit" class="text-info">Server</span>
+					</h2>
+					<h2 id="weather-stat">
+						<span id="weather-stat-name" class="text-info">=(</span>
+					</h2>
+					<h2 id="weather-wind">
+						<span class="glyphicon glyphicon-chevron-up" id="weather-wind-arrow"></span>
+						<span id="weather-wind-direction" class="text-info"></span>
+						<span id="weather-wind-power"></span>
+						<span id="weather-wind-unit" class="text-info"></span>
+					</h2>
+				</td></tr></table>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="lib/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="lib/bs/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/weatherapp.js"></script>
+</html>
