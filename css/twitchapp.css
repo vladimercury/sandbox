@@ -1,0 +1,43 @@
+/**/
+#twitchapp .twitch-chan-logo{
+	float: left;
+	height: 3em;
+	margin-right: 15px;
+	background-color: #fff;
+}
+
+#twitchapp .list-group{
+	text-align: left;
+	width: 100%;
+}
+
+#twitchapp .badge{
+	font-size: 18px;
+}
+
+#twitchapp .valign-table td{
+	padding: 60px 10%;
+}
+
+/**/
+
+#twitchapp .list-group-item.active,
+#twitchapp .navbar-default{
+	background-color: #6441a4;
+	border-color: #17141f;
+}
+
+#twitchapp,
+#twitchapp .badge,
+#twitchapp .navbar-default .active a,
+#twitchapp .navbar-default  a:hover,
+#twitchapp .list-group-item{
+	background-color: #17141f;
+	border-color: #6441a4;
+}
+
+#twitchapp a.list-group-item,
+#twitchapp a.list-group-item .list-group-item-heading,
+#twitchapp .badge{
+	color: #fff;
+}

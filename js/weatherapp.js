@@ -17,15 +17,45 @@ function refreshWeather(cityID){
 		printWeatherData(jsonData[cityID]);
 	}
 	else{
+		printWaitMessage();
 		$.getJSON(webPrefix + cityID.replace('id', '') + webPostfix, function(json) {
 			jsonData[cityID] = json;
 			printWeatherData(json);
-		});
+		}).fail(printFailMessage);
 	}
 }
 
 function setBackground(cityID){
 	$(".jumbotron").css("background", 'url("img/city/' + cityID + '.jpg") round');
+}
+
+function printClear(){
+	$("#weather-city-name").html("");
+	$("#weather-city-country").html("");
+	$("#weather-temp-val").html("");
+	$("#weather-temp-degree").html("");
+	$("#weather-temp-unit").html("");
+	$("#weather-stat-name").html("");
+	$("#weather-wind-arrow").css({
+			"transform": "rotate(" + 0 + "deg)",
+			"-webkit-transform": "rotate(" + 0 + "deg)",
+			"-ms-transform": "rotate(" + 0 + "deg)",
+	});
+	$("#weather-wind-direction").html("");
+	$("#weather-wind-power").html("");
+	$("#weather-wind-unit").html("");
+}
+
+function printFailMessage(){
+	printClear();
+	$("#weather-city-name").html("Connection");
+	$("#weather-city-country").html("failed");
+}
+
+function printWaitMessage(){
+	printClear();
+	$("#weather-city-name").html("Waiting for");
+	$("#weather-city-country").html("response");
 }
 
 function printWeatherData(json){

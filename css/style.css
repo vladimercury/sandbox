@@ -4,6 +4,10 @@
 	border-radius: 0px;
 }
 
+.navbar-fixed-top{
+	top: 0;
+}
+
 .navbar-fixed-bottom{
 	bottom: 0;
 }
@@ -30,16 +34,17 @@ table.bg{
 table.valign-table{
 	width: 100%;
 	min-height: 100vh;
+	max-height: 100vh;
 }
 
 table.valign-table td{
 	vertical-align: middle;
 }
 
-table.pad-top td{
-	padding-top: 50px;
+table.pad-top{
+	padding-top: 51px;
 }
 
-table.pad-bottom td{
-	padding-bottom: 50px;
+table.pad-bottom {
+	padding-bottom: 51px;
 }

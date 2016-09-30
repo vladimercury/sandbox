@@ -2,17 +2,27 @@
 <html>
 	<link rel="stylesheet" href="lib/bs/css/bootstrap.united.min.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/twitchapp.css"/>
 	<head>
 		<title>
 			Projects
 		</title>
 	</head>
-	<body>
+	<body id="twitchapp">
 		<div id="navigation">
+			<div class="navbar navbar-default navbar-fixed navbar-fixed-top">
+				<div class="container-fluid">
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+						<ul class="nav navbar-nav" id="commands">
+							<li><a id="hideOffline">Hide offline</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 			<div class="navbar navbar-default navbar-fixed navbar-fixed-bottom">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<a class="navbar-brand">Project</a>
+						<a href="index.html" class="navbar-brand">Project</a>
 					</div>
 
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -24,9 +34,12 @@
 			</div>
 		</div>
 		<div id="content">
+			<table class="valign-table pad-bottom pad-top"><tr><td id="real-content">
+			</table>
 		</div>
 	</body>
 	<script type="text/javascript" src="lib/jquery/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="lib/bs/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/projects.js"></script>
+	<script type="text/javascript" src="js/twitchapp.js"></script>
 </html>
