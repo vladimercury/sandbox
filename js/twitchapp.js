@@ -11,7 +11,7 @@ var twitch = {
 }
 
 function fill_follows(data){
-	console.log(data);
+	twitch.streams = {};
 	for (var i in data.follows){
 		var stream = data.follows[i];
 		twitch.streams[stream.channel.name] = {
@@ -28,6 +28,7 @@ function twitch_fail(data){
 }
 
 function twitch_success(data){
+	twitch.streams_on = {};
 	for (var i in data.streams){
 		var stream = data.streams[i];
 		delete twitch.streams[stream.channel.name];
@@ -64,6 +65,8 @@ function twitch_draw(){
 	html += '</div>';
 	$("#real-content").html(html);
 	
+	$("a#hideOffline").html("Hide offline");
+	
 	$("a#hideOffline").on("click", function(){
 		var group = $(".list-group-item:not(.active)");
 		if(group.css("display") === "block"){
@@ -74,6 +77,15 @@ function twitch_draw(){
 			group.css("display", "block");
 			$(this).html("Hide offline");
 		}
+	});
+	
+	$("a#refreshList").css("display", "block");
+	
+	$("a#refreshList").on("click", function(){
+		$("a#hideOffline").unbind("click");
+		$("a#refreshList").unbind("click");
+		$("a#refreshList").css("display", "none");
+		get_follow_data();
 	});
 }
 
