@@ -100,7 +100,7 @@ function twitch_html_off(data){
 }
 
 function twitch_html_on(data){
-	return '<a href="' + data.url + '" class="list-group-item active">' +
+	return '<a href="' + data.url + '" class="list-group-item active" target="_blank">' +
 			'<span class="badge">' + data.viewers + '</span>' +
 			'<img src="' + data.logo + '" class="img-circle twitch-chan-logo">' +
 			'<span>' +
