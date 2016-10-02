@@ -2,6 +2,8 @@ var twitch = {
 	user: 'vladimercury',
 	clientID: 'n7z3f45b4160mwkfp0ptukaf7ge3ee3',
 	api: 'https://api.twitch.tv/kraken/',
+	player: 'http://player.twitch.tv/?channel=',
+	chat: 'http://twitch.tv/chat/embed?channel=',
 	streams:{
 		
 	},
@@ -63,34 +65,35 @@ function twitch_draw(){
 		html += twitch_html_off(twitch.streams[offline[i]]);
 	}
 	html += '</div>';
+
 	$("#real-content").html(html);
-	
-	$("a#hideOffline").html("Hide offline");
-	
+	$("#real-content").show("fade", {}, 250);
+
 	$("a#hideOffline").on("click", function(){
 		var group = $(".list-group-item:not(.active)");
-		if(group.css("display") === "block"){
-			group.css("display",  "none");
-			$(this).html("Show offline");
-		}
-		else{
-			group.css("display", "block");
-			$(this).html("Hide offline");
-		}
+			group.toggle("highlight", {}, 500);
 	});
 	
-	$("a#refreshList").css("display", "block");
+	$("a#refreshList").show("fade", 250);
 	
 	$("a#refreshList").on("click", function(){
 		$("a#hideOffline").unbind("click");
 		$("a#refreshList").unbind("click");
-		$("a#refreshList").css("display", "none");
+		$("a#refreshList").hide("fade", 250);
+		$("#real-content").hide("fade", {}, 250);
 		get_follow_data();
 	});
+
+	$("a.link-stream").on("click", function(){
+		run_stream($(this).attr("channel"));
+	});
+
+	$("li#close-player").on("click", close_stream);
+	$("li#toggle-chat").on("click", toggle_chat);
 }
 
 function twitch_html_off(data){
-	return '<a class="list-group-item">' +
+	return '<a class="link-stream list-group-item" channel="' + data.user + '>' +
 			'<img src="' + (data.logo === null ? 'img/nothing.gif' : data.logo) + '" class="img-circle twitch-chan-logo">' +
 			'<span>' +
 				'<h4 class="list-group-item-heading">OFFLINE</h4>' +
@@ -100,7 +103,7 @@ function twitch_html_off(data){
 }
 
 function twitch_html_on(data){
-	return '<a href="' + data.url + '" class="list-group-item active" target="_blank">' +
+	return '<a class="link-stream list-group-item active" channel="' + data.user + '">' +
 			'<span class="badge">' + data.viewers + '</span>' +
 			'<img src="' + data.logo + '" class="img-circle twitch-chan-logo">' +
 			'<span>' +
@@ -135,6 +138,35 @@ function get_online_data(){
 		success: twitch_success,
 		error: twitch_fail,
 	});
+}
+
+function run_stream(channel){
+	$("#twitchapp .overlay").css("display", "block");
+	$("#twitchapp").addClass("overlayed");
+	$("#close-player").css("display", "block");
+	$("#toggle-chat").css("display", "block");
+	$("#twitch-chat").attr("src", twitch.chat + channel);
+	$("#twitch-player").attr("src", twitch.player + channel);
+}
+
+function close_stream(){
+	$("#twitch-player").attr("src", "");
+	$("#twitch-chat").attr("src", "");
+	$("#close-player").css("display", "none");
+	$("#toggle-chat").css("display", "none");
+	$("#twitchapp .overlay").css("display", "none");
+	$("#twitchapp").removeClass("overlayed");
+}
+
+function toggle_chat(){
+	if ($("#twitch-chat").css("display") === "none"){
+		$("#twitch-player").css("width", "77%");
+		$("#twitch-chat").css("display", "block");
+	}
+	else{
+		$("#twitch-chat").css("display", "none");
+		$("#twitch-player").css("width", "100%");
+	}
 }
 
 $(get_follow_data());

@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="css/twitchapp.css"/>
 	<head>
 		<title>
-			Projects
+			TwitchApp
 		</title>
 	</head>
 	<body id="twitchapp">
@@ -14,7 +14,7 @@
 				<div class="container-fluid">
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 						<ul class="nav navbar-nav" id="commands">
-							<li><a id="hideOffline">Hide offline</a></li>
+							<li><a id="hideOffline">Toggle offline</a></li>
 							<li><a id="refreshList">Refresh</a></li>
 						</ul>
 					</div>
@@ -30,16 +30,38 @@
 						<ul class="nav navbar-nav" id="project-links">
 							
 						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li id="toggle-chat" style="display: none;"><a>Toggle Chat</a></li>
+							<li id="close-player" style="display: none;"><a>Close Player</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div id="content">
-			<table class="valign-table pad-bottom pad-top"><tr><td id="real-content">
+			<table class="valign-table pad-bottom pad-top"><tr><td id="real-content" style="display:none;">
+					</td>
+				</tr>
 			</table>
+		</div>
+		<div class="overlay">
+				<iframe id="twitch-player"
+	        height="100%" 
+	        width="77%" 
+	        frameborder="0" 
+	        scrolling="no"
+	        allowfullscreen="true">
+	    	</iframe>
+	    	<iframe id="twitch-chat" 
+	        height="100%" 
+	        width="23%" 
+	        frameborder="0" 
+	        scrolling="no">
+	    	</iframe>
 		</div>
 	</body>
 	<script type="text/javascript" src="lib/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="lib/jquery/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="lib/bs/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/projects.js"></script>
 	<script type="text/javascript" src="js/twitchapp.js"></script>

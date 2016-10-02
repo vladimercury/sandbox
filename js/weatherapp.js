@@ -20,6 +20,7 @@ function refreshWeather(cityID){
 		printWaitMessage();
 		$.getJSON(webPrefix + cityID.replace('id', '') + webPostfix, function(json) {
 			jsonData[cityID] = json;
+			console.log(json);
 			printWeatherData(json);
 		}).fail(printFailMessage);
 	}

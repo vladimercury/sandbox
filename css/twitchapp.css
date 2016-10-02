@@ -24,14 +24,15 @@
 #twitchapp .list-group-item.active,
 #twitchapp .navbar-default{
 	background-color: #6441a4;
-	border-color: #17141f;
+	border-color: #17141f #6441a4;
 }
 
 #twitchapp,
 #twitchapp .badge,
 #twitchapp .navbar-default .active a,
 #twitchapp .navbar-default  a:hover,
-#twitchapp .list-group-item{
+#twitchapp .list-group-item,
+#twitchapp a.list-group-item.active:hover{
 	background-color: #17141f;
 	border-color: #6441a4;
 }
@@ -40,4 +41,28 @@
 #twitchapp a.list-group-item .list-group-item-heading,
 #twitchapp .badge{
 	color: #fff;
+}
+
+#twitchapp .overlay{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(100, 65, 164, 0.8);
+	padding-bottom: 51px;
+	white-space: nowrap;
+	z-index: 1032;
+}
+
+#twitchapp .navbar-fixed-bottom{
+	z-index: 1033;
+}
+.overlayed{
+	overflow-y: hidden;
+}
+
+#twitchapp iframe{
+	float: left;
 }
