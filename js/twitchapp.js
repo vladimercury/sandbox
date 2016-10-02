@@ -93,7 +93,7 @@ function twitch_draw(){
 }
 
 function twitch_html_off(data){
-	return '<a class="link-stream list-group-item" channel="' + data.user + '>' +
+	return '<a class="list-group-item">' +
 			'<img src="' + (data.logo === null ? 'img/nothing.gif' : data.logo) + '" class="img-circle twitch-chan-logo">' +
 			'<span>' +
 				'<h4 class="list-group-item-heading">OFFLINE</h4>' +
